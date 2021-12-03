@@ -1,10 +1,10 @@
-package challenges;
+package com.sven.adventofcode.challenges;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeInputReader;
 
 public class SonarSweepPartTwo {
     
@@ -25,7 +25,7 @@ public class SonarSweepPartTwo {
         
         List<Integer> resultList = new ArrayList<>();
 
-        List<String> sonarDataList = ChallengeInputReader.readFileConentasList("sonarsweep_input.txt");
+        List<String> sonarDataList = ChallengeInputReader.readFileContentasList("sonarsweep_input.txt");
 
         for(int i = 0; i < sonarDataList.size()-2; i++){
 

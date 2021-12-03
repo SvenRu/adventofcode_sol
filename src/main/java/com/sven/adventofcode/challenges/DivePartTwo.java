@@ -1,19 +1,21 @@
-package challenges;
+package com.sven.adventofcode.challenges;
 
 import java.io.IOException;
 import java.util.List;
 
-import utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeInputReader;
 
-public class Dive {
-
+public class DivePartTwo {
+    
     static int horizontalPos = 0;
     static int depthPos = 0; 
+
+    static int aim = 0;
 
     public static void main(String[] args) {
         
         try {
-            List<String> instructionsList = ChallengeInputReader.readFileConentasList("dive_input.txt");
+            List<String> instructionsList = ChallengeInputReader.readFileContentasList("dive2_input.txt");
             solve(instructionsList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -25,12 +27,13 @@ public class Dive {
         for(String instruction : instructions){
             if (instruction.contains("forward")) {
                 horizontalPos+=getNav(instruction);
+                depthPos = depthPos + aim * getNav(instruction);
             }
             if (instruction.contains("down")) {
-                depthPos+=getNav(instruction);
+                aim+=getNav(instruction);
             }
             if (instruction.contains("up")) {
-                depthPos-=getNav(instruction);
+                aim-=getNav(instruction);
             }
         }
 
@@ -42,4 +45,6 @@ public class Dive {
         return Integer.parseInt(instruction.replaceAll("\\D+",""));
     }
     
+
+
 }

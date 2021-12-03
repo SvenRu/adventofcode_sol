@@ -1,4 +1,4 @@
-package utils;
+package com.sven.adventofcode.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class ChallengeInputReader {
     
-    public static List<String> readFileConentasList(String fileName) throws IOException{
+    public static List<String> readFileContentasList(String fileName) throws IOException{
        
         Path path = Paths.get("src/main/resources/files/" + fileName);
         List<String> result;

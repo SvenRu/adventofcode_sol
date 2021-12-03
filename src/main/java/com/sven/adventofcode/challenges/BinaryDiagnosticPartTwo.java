@@ -1,10 +1,10 @@
-package challenges;
+package com.sven.adventofcode.challenges;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeInputReader;
 
 public class BinaryDiagnosticPartTwo {
 
@@ -13,7 +13,7 @@ public class BinaryDiagnosticPartTwo {
 
     public static void main(String[] args) {
         try {
-            List<String> report = ChallengeInputReader.readFileConentasList("binarydiagnostic2_input.txt");
+            List<String> report = ChallengeInputReader.readFileContentasList("binarydiagnostic2_input.txt");
 
             String oxygenGeneratorRating = getOxygenGeneratorRating(report);
             String co2ScrubberRating = getCo2ScrubberRating(report);

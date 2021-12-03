@@ -1,15 +1,15 @@
-package challenges;
+package com.sven.adventofcode.challenges;
 
 import java.io.IOException;
 import java.util.List;
 
-import utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeInputReader;
 
 public class BinaryDiagnostic {
 
     public static void main(String[] args) { 
         try {
-            List<String> report = ChallengeInputReader.readFileConentasList("binarydiagnostic_input.txt");
+            List<String> report = ChallengeInputReader.readFileContentasList("binarydiagnostic_input.txt");
             solve(report);
         } catch (IOException e) {
             e.printStackTrace();

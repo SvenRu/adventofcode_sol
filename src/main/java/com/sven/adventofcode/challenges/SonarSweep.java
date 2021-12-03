@@ -1,9 +1,9 @@
-package challenges;
+package com.sven.adventofcode.challenges;
 
 import java.io.IOException;
 import java.util.List;
 
-import utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeInputReader;
 
 public class SonarSweep {
 
@@ -13,7 +13,7 @@ public class SonarSweep {
     public static void main(String[] args) {
 
         try {
-            List<String> resultList = ChallengeInputReader.readFileConentasList("sonarsweep_input.txt");
+            List<String> resultList = ChallengeInputReader.readFileContentasList("sonarsweep_input.txt");
             SonarSweep.solve(resultList);
 
         } catch (IOException e) {
