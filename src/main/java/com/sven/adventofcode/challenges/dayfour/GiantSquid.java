@@ -26,7 +26,7 @@ public class GiantSquid {
                 checkBingoBoard(bingoBoard);
             }
 
-            System.out.println("Winner Board: ");
+            System.out.println("Best Winner Board: ");
             System.out.println(Arrays.deepToString(winnerBoard)
                     .replace("],", "\n").replace(",", "\t ")
                     .replaceAll("[\\[\\]]", " "));
@@ -40,7 +40,7 @@ public class GiantSquid {
         }
     }
 
-    public static String[][] checkBingoBoard(String[][] currentBingoBoard) {
+    public static void checkBingoBoard(String[][] currentBingoBoard) {
 
         int numbersDrawn = 0;
         for (String drawnNumber : drawnNumbersList) {
@@ -50,19 +50,18 @@ public class GiantSquid {
                     if (drawnNumber.equals(bingoNumber)) {
                         currentBingoBoard[row][col] = "x";
                         if (isAWinner(currentBingoBoard, row, col)) {
-                            if (numbersDrawn < numbersDrawnWinner) {
+                            if (numbersDrawn < numbersDrawnWinner) { //try to find the best winner board
                                 numbersDrawnWinner = numbersDrawn;
                                 winnerBoard = currentBingoBoard;
                                 calcFinalScore(currentBingoBoard, drawnNumber);
                             }
-                            return currentBingoBoard;
+                            return;
                         }
                     }
                 }
             }
             numbersDrawn++;
         }
-        return currentBingoBoard;
     }
 
     private static void calcFinalScore(String[][] currentBingoBoard, String drawnNumber) {

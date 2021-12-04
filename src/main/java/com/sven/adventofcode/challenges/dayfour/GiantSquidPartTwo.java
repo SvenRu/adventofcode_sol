@@ -25,7 +25,7 @@ public class GiantSquidPartTwo {
                 checkBingoBoard(bingoBoard);
             }
 
-            System.out.println("Worst Board: ");
+            System.out.println("Worst Winner Board: ");
             System.out.println(Arrays.deepToString(winnerBoard)
                     .replace("],", "\n").replace(",", "\t ")
                     .replaceAll("[\\[\\]]", " "));
@@ -49,7 +49,7 @@ public class GiantSquidPartTwo {
                     if (drawnNumber.equals(bingoNumber)) {
                         currentBingoBoard[row][col] = "x";
                         if (isAWinner(currentBingoBoard, row, col)) {
-                            if (numbersDrawn > numbersDrawnWinner) {
+                            if (numbersDrawn > numbersDrawnWinner) { //try to find the worst winner board
                                 numbersDrawnWinner = numbersDrawn;
                                 winnerBoard = currentBingoBoard;
                                 calcFinalScore(currentBingoBoard, drawnNumber);
