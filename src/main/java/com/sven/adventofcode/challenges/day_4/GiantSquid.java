@@ -1,4 +1,4 @@
-package com.sven.adventofcode.challenges.dayfour;
+package com.sven.adventofcode.challenges.day_4;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,10 +7,11 @@ import java.util.List;
 
 import com.sven.adventofcode.utils.ChallengeInputReader;
 
-public class GiantSquidPartTwo {
+public class GiantSquid {
+
     static List<String> drawnNumbersList = new ArrayList<>();
 
-    static int numbersDrawnWinner = 1;
+    static int numbersDrawnWinner = 100;
     static String[][] winnerBoard = null;
     static int finalScore = 1;
     private static int numberCalled = 0;
@@ -25,7 +26,7 @@ public class GiantSquidPartTwo {
                 checkBingoBoard(bingoBoard);
             }
 
-            System.out.println("Worst Winner Board: ");
+            System.out.println("Best Winner Board: ");
             System.out.println(Arrays.deepToString(winnerBoard)
                     .replace("],", "\n").replace(",", "\t ")
                     .replaceAll("[\\[\\]]", " "));
@@ -39,7 +40,7 @@ public class GiantSquidPartTwo {
         }
     }
 
-    public static String[][] checkBingoBoard(String[][] currentBingoBoard) {
+    public static void checkBingoBoard(String[][] currentBingoBoard) {
 
         int numbersDrawn = 0;
         for (String drawnNumber : drawnNumbersList) {
@@ -49,19 +50,18 @@ public class GiantSquidPartTwo {
                     if (drawnNumber.equals(bingoNumber)) {
                         currentBingoBoard[row][col] = "x";
                         if (isAWinner(currentBingoBoard, row, col)) {
-                            if (numbersDrawn > numbersDrawnWinner) { //try to find the worst winner board
+                            if (numbersDrawn < numbersDrawnWinner) { //try to find the best winner board
                                 numbersDrawnWinner = numbersDrawn;
                                 winnerBoard = currentBingoBoard;
                                 calcFinalScore(currentBingoBoard, drawnNumber);
                             }
-                            return currentBingoBoard;
+                            return;
                         }
                     }
                 }
             }
             numbersDrawn++;
         }
-        return currentBingoBoard;
     }
 
     private static void calcFinalScore(String[][] currentBingoBoard, String drawnNumber) {

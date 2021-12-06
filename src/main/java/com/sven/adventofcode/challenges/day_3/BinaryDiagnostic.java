@@ -1,4 +1,4 @@
-package com.sven.adventofcode.challenges.daythree;
+package com.sven.adventofcode.challenges.day_3;
 
 import java.io.IOException;
 import java.util.List;
