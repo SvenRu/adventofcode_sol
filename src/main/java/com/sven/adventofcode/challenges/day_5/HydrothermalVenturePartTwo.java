@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.sven.adventofcode.utils.ChallengeInputReader;
 
-public class HydrothermalVenture {
+public class HydrothermalVenturePartTwo {
 
     static int countOverlappingLines = 0;
 
@@ -36,13 +36,13 @@ public class HydrothermalVenture {
 
             for (int i = 0; i < diagram.length; i++) {
                 for (int j = 0; j < diagram[i].length; j++) {
-                    if(diagram[i][j]>1){
+                    if (diagram[i][j] > 1) {
                         countOverlappingLines++;
                     }
                 }
             }
 
-            System.out.println("Overlapping lines: "+countOverlappingLines);
+            System.out.println("Overlapping lines: " + countOverlappingLines);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,6 +82,49 @@ public class HydrothermalVenture {
                         diagram[y1][j]++;
                     }
                 }
+            } 
+            // diagonal
+            if (x1 == y1 && x2 == y2 || x1 == y2 && y1 == x2) {
+                if (x1 < x2 && y1 < y2 && (x2 - x1) == (y2 - y1)) {
+                    // x1++ till x2
+                    // y1++ till y2
+                    for (int j = x1; j < x2 + 1; j++) {
+                        int x_c = j;
+                        int y_c = y1;
+                        diagram[y_c][x_c]++;
+                        y1++;
+                    }
+                }
+                if (x1 < x2 && y1 > y2 && (x2 - x1) == (y1 - y2)) {
+                    // x1++ till x2
+                    // y2++ till y1
+                    for (int j = x1; j < x2 + 1; j++) {
+                        int x_c = j;
+                        int y_c = y1;
+                        diagram[y_c][x_c]++;
+                        y1--;
+                    }
+                }
+                if (x1 > x2 && y1 < y2 && (x1 - x2) == (y2 - y1)) {
+                    // x2++ till x1
+                    // y1++ till y2
+                    for (int j = x1; j >= x2; j--) {
+                        int x_c = j;
+                        int y_c = y1;
+                        diagram[y_c][x_c]++;
+                        y1++;
+                    }
+                }
+                if (x1 > x2 && y1 > y2 && (x1 - x2) == (y1 - y2)) {
+                    // x2++ till x1
+                    // y2++ till y1
+                    for (int j = x1; j >= x2; j--) {
+                        int x_c = j;
+                        int y_c = y1;
+                        diagram[y_c][x_c]++;
+                        y1--;
+                    }
+                }
             }
         }
     }
@@ -119,5 +162,4 @@ public class HydrothermalVenture {
             }
         }
     }
-
 }
