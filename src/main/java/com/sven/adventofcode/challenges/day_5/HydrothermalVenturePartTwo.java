@@ -24,7 +24,7 @@ public class HydrothermalVenturePartTwo {
     public static void main(String[] args) {
 
         try {
-            List<String> inputList = ChallengeInputReader.readFileContentasList("hydrothermalventure_input.txt");
+            List<String> inputList = ChallengeInputReader.readFileContentasList("hydrothermalventure2_input.txt");
             initCoordinates(inputList);
             fillDiagram();
             System.out.println(x_max);
@@ -59,9 +59,9 @@ public class HydrothermalVenturePartTwo {
             int y1 = y1List.get(i);
 
             int x2 = x2List.get(i);
-            int y2 = y2List.get(i);
+            int y2 = y2List.get(i); //add those point already, but don't add them later
 
-            if (x1 == x2) {
+            if (x1 - x2 == x2 - x1) {
                 if (y1 < y2) {
                     for (int j = y1; j < y2 + 1; j++) {
                         diagram[j][x1]++;
@@ -72,7 +72,7 @@ public class HydrothermalVenturePartTwo {
                     }
                 }
             }
-            if (y1 == y2) {
+            if (y1 - y2 == y2 - y1) {
                 if (x1 < x2) {
                     for (int j = x1; j < x2 + 1; j++) {
                         diagram[y1][j]++;
@@ -84,46 +84,34 @@ public class HydrothermalVenturePartTwo {
                 }
             } 
             // diagonal
-            if (x1 == y1 && x2 == y2 || x1 == y2 && y1 == x2) {
-                if (x1 < x2 && y1 < y2 && (x2 - x1) == (y2 - y1)) {
-                    // x1++ till x2
-                    // y1++ till y2
-                    for (int j = x1; j < x2 + 1; j++) {
-                        int x_c = j;
-                        int y_c = y1;
-                        diagram[y_c][x_c]++;
-                        y1++;
-                    }
+            int x = x1;
+            int y = y1;
+            if ((x1 - x2) == (y2 - y1)) {
+                for (int j = y1; j < y2 + 1; j++) {
+                    diagram[y][x]++;
+                    x--;
+                    y++;
                 }
-                if (x1 < x2 && y1 > y2 && (x2 - x1) == (y1 - y2)) {
-                    // x1++ till x2
-                    // y2++ till y1
-                    for (int j = x1; j < x2 + 1; j++) {
-                        int x_c = j;
-                        int y_c = y1;
-                        diagram[y_c][x_c]++;
-                        y1--;
-                    }
+            }
+            if ((x2 - x1) == (y2 - y1)) {
+                for (int j = x1; j < x2 + 1; j++) {
+                    diagram[y][x]++;
+                    x++;
+                    y++;
                 }
-                if (x1 > x2 && y1 < y2 && (x1 - x2) == (y2 - y1)) {
-                    // x2++ till x1
-                    // y1++ till y2
-                    for (int j = x1; j >= x2; j--) {
-                        int x_c = j;
-                        int y_c = y1;
-                        diagram[y_c][x_c]++;
-                        y1++;
-                    }
+            }
+            if ((x1 - x2) == (y1 - y2)) {
+                for (int j = x2; j < x1 + 1; j++) {
+                    diagram[y][x]++;
+                    x--;
+                    y--;
                 }
-                if (x1 > x2 && y1 > y2 && (x1 - x2) == (y1 - y2)) {
-                    // x2++ till x1
-                    // y2++ till y1
-                    for (int j = x1; j >= x2; j--) {
-                        int x_c = j;
-                        int y_c = y1;
-                        diagram[y_c][x_c]++;
-                        y1--;
-                    }
+            }
+            if ((x2 - x1) == (y1 - y2)) {
+                for (int j = x1; j < x2 + 1; j++) {
+                    diagram[y][x]++;
+                    x++;
+                    y--;
                 }
             }
         }

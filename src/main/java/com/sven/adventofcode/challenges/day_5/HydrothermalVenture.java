@@ -61,7 +61,7 @@ public class HydrothermalVenture {
             int x2 = x2List.get(i);
             int y2 = y2List.get(i);
 
-            if (x1 == x2) {
+            if (x1 - x2 == 0) {
                 if (y1 < y2) {
                     for (int j = y1; j < y2 + 1; j++) {
                         diagram[j][x1]++;
@@ -72,13 +72,13 @@ public class HydrothermalVenture {
                     }
                 }
             }
-            if (y1 == y2) {
+            if (y1 - y2 == 0) {
                 if (x1 < x2) {
-                    for (int j = x1; j < x2 + 1; j++) {
+                    for (int j = x1; j < x2 +1;  j++) {
                         diagram[y1][j]++;
                     }
                 } else {
-                    for (int j = x2; j < x1 + 1; j++) {
+                    for (int j = x2; j < x1+1; j++) {
                         diagram[y1][j]++;
                     }
                 }
