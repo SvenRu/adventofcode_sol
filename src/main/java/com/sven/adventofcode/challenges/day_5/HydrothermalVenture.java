@@ -27,12 +27,6 @@ public class HydrothermalVenture {
             List<String> inputList = ChallengeInputReader.readFileContentasList("hydrothermalventure_input.txt");
             initCoordinates(inputList);
             fillDiagram();
-            System.out.println(x_max);
-            System.out.println(y_max);
-
-            System.out.println(Arrays.deepToString(diagram)
-                    .replace("],", "\n").replace(",", "\t ")
-                    .replaceAll("[\\[\\]]", " "));
 
             for (int i = 0; i < diagram.length; i++) {
                 for (int j = 0; j < diagram[i].length; j++) {

@@ -27,12 +27,6 @@ public class HydrothermalVenturePartTwo {
             List<String> inputList = ChallengeInputReader.readFileContentasList("hydrothermalventure2_input.txt");
             initCoordinates(inputList);
             fillDiagram();
-            System.out.println(x_max);
-            System.out.println(y_max);
-
-            System.out.println(Arrays.deepToString(diagram)
-                    .replace("],", "\n").replace(",", "\t ")
-                    .replaceAll("[\\[\\]]", " "));
 
             for (int i = 0; i < diagram.length; i++) {
                 for (int j = 0; j < diagram[i].length; j++) {
@@ -59,9 +53,9 @@ public class HydrothermalVenturePartTwo {
             int y1 = y1List.get(i);
 
             int x2 = x2List.get(i);
-            int y2 = y2List.get(i); //add those point already, but don't add them later
+            int y2 = y2List.get(i);
 
-            if (x1 - x2 == x2 - x1) {
+            if ((x1 - x2) == (x2 - x1)) {
                 if (y1 < y2) {
                     for (int j = y1; j < y2 + 1; j++) {
                         diagram[j][x1]++;
@@ -72,7 +66,7 @@ public class HydrothermalVenturePartTwo {
                     }
                 }
             }
-            if (y1 - y2 == y2 - y1) {
+            if ((y1 - y2) == (y2 - y1)) {
                 if (x1 < x2) {
                     for (int j = x1; j < x2 + 1; j++) {
                         diagram[y1][j]++;
@@ -82,7 +76,7 @@ public class HydrothermalVenturePartTwo {
                         diagram[y1][j]++;
                     }
                 }
-            } 
+            }
             // diagonal
             int x = x1;
             int y = y1;
