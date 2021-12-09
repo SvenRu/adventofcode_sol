@@ -18,8 +18,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
+    		<groupId>com.google.guava</groupId>
+   			<artifactId>guava</artifactId>
+    		<version>31.0.1-jre</version>
 		</dependency>
 
 		<dependency>
