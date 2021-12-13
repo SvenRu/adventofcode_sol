@@ -17,24 +17,24 @@ public class LanternfishPartTwo {
             List<String> inputList = ChallengeInputReader.readFileContentasList("lanternfish_input.txt");
             String[] fishesArray = inputList.get(0).split(",");
 
-            Map<Integer, BigInteger> fishPopulationMap = new HashMap<>();
-            fishPopulationMap.put(8, new BigInteger("0"));
-            fishPopulationMap.put(7, new BigInteger("0"));
-            fishPopulationMap.put(6, new BigInteger("0"));
-            fishPopulationMap.put(5, new BigInteger("0"));
-            fishPopulationMap.put(4, new BigInteger("0"));
-            fishPopulationMap.put(3, new BigInteger("0"));
-            fishPopulationMap.put(2, new BigInteger("0"));
-            fishPopulationMap.put(1, new BigInteger("0"));
-            fishPopulationMap.put(0, new BigInteger("0"));
+            Map<Integer, BigInteger> fishPopulation = new HashMap<>();
+            fishPopulation.put(8, new BigInteger("0"));
+            fishPopulation.put(7, new BigInteger("0"));
+            fishPopulation.put(6, new BigInteger("0"));
+            fishPopulation.put(5, new BigInteger("0"));
+            fishPopulation.put(4, new BigInteger("0"));
+            fishPopulation.put(3, new BigInteger("0"));
+            fishPopulation.put(2, new BigInteger("0"));
+            fishPopulation.put(1, new BigInteger("0"));
+            fishPopulation.put(0, new BigInteger("0"));
 
             for (String fish : fishesArray) {
                 int daysleft = Integer.parseInt(fish);
-                fishPopulationMap.put(daysleft, fishPopulationMap.get(daysleft).add(new BigInteger("1")));
+                fishPopulation.put(daysleft, fishPopulation.get(daysleft).add(new BigInteger("1")));
             }
 
             int days = 256;
-            totalAmountofFish = totalAmountofFish.add(calcTotalAmountOfFish(fishPopulationMap, days));
+            totalAmountofFish = totalAmountofFish.add(calcTotalAmountOfFish(fishPopulation, days));
 
             System.out.println("Amount of fishes after " + days + " days: " + totalAmountofFish + " fish");
 
@@ -47,19 +47,19 @@ public class LanternfishPartTwo {
 
         for (int i = 1; i <= days; i++) {
 
-            Map<Integer, BigInteger> nextDayPopulationMap = new HashMap<Integer, BigInteger>();
+            Map<Integer, BigInteger> nextDayPopulation = new HashMap<Integer, BigInteger>();
            
-            nextDayPopulationMap.put(8, dayBeforePopulation.get(0));
-            nextDayPopulationMap.put(7, dayBeforePopulation.get(8));
-            nextDayPopulationMap.put(6, dayBeforePopulation.get(7).add(dayBeforePopulation.get(0)));
-            nextDayPopulationMap.put(5, dayBeforePopulation.get(6));
-            nextDayPopulationMap.put(4, dayBeforePopulation.get(5));
-            nextDayPopulationMap.put(3, dayBeforePopulation.get(4));
-            nextDayPopulationMap.put(2, dayBeforePopulation.get(3));
-            nextDayPopulationMap.put(1, dayBeforePopulation.get(2));
-            nextDayPopulationMap.put(0, dayBeforePopulation.get(1));
+            nextDayPopulation.put(8, dayBeforePopulation.get(0));
+            nextDayPopulation.put(7, dayBeforePopulation.get(8));
+            nextDayPopulation.put(6, dayBeforePopulation.get(7).add(dayBeforePopulation.get(0)));
+            nextDayPopulation.put(5, dayBeforePopulation.get(6));
+            nextDayPopulation.put(4, dayBeforePopulation.get(5));
+            nextDayPopulation.put(3, dayBeforePopulation.get(4));
+            nextDayPopulation.put(2, dayBeforePopulation.get(3));
+            nextDayPopulation.put(1, dayBeforePopulation.get(2));
+            nextDayPopulation.put(0, dayBeforePopulation.get(1));
 
-            dayBeforePopulation = nextDayPopulationMap;
+            dayBeforePopulation = nextDayPopulation;
         }
 
         BigInteger amountOfFish = new BigInteger("0");
