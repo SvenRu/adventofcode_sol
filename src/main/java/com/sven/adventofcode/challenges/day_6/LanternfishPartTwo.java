@@ -43,28 +43,28 @@ public class LanternfishPartTwo {
         }
     }
 
-    public static BigInteger calcTotalAmountOfFish(Map<Integer, BigInteger> dayBeforefishPopulation, int days) {
+    public static BigInteger calcTotalAmountOfFish(Map<Integer, BigInteger> dayBeforePopulation, int days) {
 
         for (int i = 1; i <= days; i++) {
 
             Map<Integer, BigInteger> nextDayPopulationMap = new HashMap<Integer, BigInteger>();
            
-            nextDayPopulationMap.put(8, dayBeforefishPopulation.get(0));
-            nextDayPopulationMap.put(7, dayBeforefishPopulation.get(8));
-            nextDayPopulationMap.put(6, dayBeforefishPopulation.get(7).add(dayBeforefishPopulation.get(0)));
-            nextDayPopulationMap.put(5, dayBeforefishPopulation.get(6));
-            nextDayPopulationMap.put(4, dayBeforefishPopulation.get(5));
-            nextDayPopulationMap.put(3, dayBeforefishPopulation.get(4));
-            nextDayPopulationMap.put(2, dayBeforefishPopulation.get(3));
-            nextDayPopulationMap.put(1, dayBeforefishPopulation.get(2));
-            nextDayPopulationMap.put(0, dayBeforefishPopulation.get(1));
+            nextDayPopulationMap.put(8, dayBeforePopulation.get(0));
+            nextDayPopulationMap.put(7, dayBeforePopulation.get(8));
+            nextDayPopulationMap.put(6, dayBeforePopulation.get(7).add(dayBeforePopulation.get(0)));
+            nextDayPopulationMap.put(5, dayBeforePopulation.get(6));
+            nextDayPopulationMap.put(4, dayBeforePopulation.get(5));
+            nextDayPopulationMap.put(3, dayBeforePopulation.get(4));
+            nextDayPopulationMap.put(2, dayBeforePopulation.get(3));
+            nextDayPopulationMap.put(1, dayBeforePopulation.get(2));
+            nextDayPopulationMap.put(0, dayBeforePopulation.get(1));
 
-            dayBeforefishPopulation = nextDayPopulationMap;
+            dayBeforePopulation = nextDayPopulationMap;
         }
 
         BigInteger amountOfFish = new BigInteger("0");
 
-        for (var entry : dayBeforefishPopulation.entrySet()) {
+        for (var entry : dayBeforePopulation.entrySet()) {
             amountOfFish = amountOfFish.add(entry.getValue());
         }
 
