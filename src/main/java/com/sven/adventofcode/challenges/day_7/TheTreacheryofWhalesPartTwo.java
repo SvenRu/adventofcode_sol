@@ -1,18 +1,14 @@
 package com.sven.adventofcode.challenges.day_7;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
 import com.sven.adventofcode.utils.ChallengeInputReader;
 
 public class TheTreacheryofWhalesPartTwo {
-    public static int totalFuel = 0;
 
     public static void main(String[] args) {
         
@@ -21,30 +17,50 @@ public class TheTreacheryofWhalesPartTwo {
             List<String> horizontalPositions = Arrays.asList(crapsPositions.split(","));
 
             List<Double> crappHosPositions = horizontalPositions.stream().map(Double::parseDouble).collect(Collectors.toList());
-            double median = getMean(crappHosPositions); 
-            System.out.println("Mean: " + median);
-            for (Double hpos : crappHosPositions) {
+            
+            double median = getMedian(crappHosPositions); 
+            
+            int perfectMinFuel = 100000000;
 
-                int hops = 0;
+            for(double i = median; i < 800; i++){//super ugly solution
+                
+                int fuel = getFuelConsumption(crappHosPositions, i);
 
-                if(median < hpos) {
-                    hops = (int) (hpos - median);
-                } else {
-                    hops = (int) (median - hpos);
+                if(fuel < perfectMinFuel){
+                    perfectMinFuel = fuel;
                 }
-
-                totalFuel+=burnedFuel(hops, median);
             }
 
-            System.out.println("Amount of fuel spend: " + totalFuel);
+            System.out.println("Amount of fuel spend: " + perfectMinFuel);
 
         } catch (IOException e) {
             e.printStackTrace();
         }  
-    }  
+    } 
 
-    public static double burnedFuel(int hops, double median){
 
+    public static int getFuelConsumption(List<Double> crappHosPositions, double median){
+
+        int totalFuel = 0;
+
+        for (Double hpos : crappHosPositions) {
+
+            int hops = 0;
+
+            if(median < hpos) {
+                hops = (int) (hpos - median);
+            } else {
+                hops = (int) (median - hpos);
+            }
+
+            totalFuel+=burnedFuel(hops);
+        }
+
+        return totalFuel;
+    }
+
+    public static double burnedFuel(int hops){
+        
         int fuel = 0;
         int fuelToAdd = 1;
 
@@ -55,14 +71,18 @@ public class TheTreacheryofWhalesPartTwo {
         return fuel;
     }
     
-    public static double getMean(List<Double> horizontalPos){
+    public static double getMedian(List<Double> horizontalPos){
 
         Collections.sort(horizontalPos);
-        double sum = 0;
-        for (Double pos : horizontalPos) {
-            sum+=pos;
-        }
 
-        return sum/horizontalPos.size();
+        if (horizontalPos.size() % 2 == 1){
+        return horizontalPos.get((horizontalPos.size() + 1) / 2 - 1);
+        } else {
+        
+        double m1 = horizontalPos.get(horizontalPos.size() / 2 - 1);
+        double m2 = horizontalPos.get(horizontalPos.size() / 2);
+
+        return (m1 + m2) / 2.0;
+        }
     }
 }
