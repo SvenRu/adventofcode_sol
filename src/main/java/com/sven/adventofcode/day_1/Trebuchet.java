@@ -3,7 +3,7 @@ package com.sven.adventofcode.day_1;
 import java.io.IOException;
 import java.util.List;
 
-import com.sven.adventofcode.utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeHelper;
 
 public class Trebuchet {
 
@@ -12,7 +12,7 @@ public class Trebuchet {
     // read file day1_1.txt file to array
     public static void processInputFile_day1_1() throws IOException {
         // read file
-        List<String> inputfile = ChallengeInputReader.readFileContentasList("day1_1.txt");
+        List<String> inputfile = ChallengeHelper.readFileContentasList("day1_1.txt");
         // iterate
         for (String line : inputfile) {
             processLine(line);
@@ -22,7 +22,7 @@ public class Trebuchet {
     // read file day1_1.txt file to array
     public static void processInputFile_day1_2() throws IOException {
         // read file
-        List<String> inputfile = ChallengeInputReader.readFileContentasList("day1_2.txt");
+        List<String> inputfile = ChallengeHelper.readFileContentasList("day1_2.txt");
         // iterate
         for (String line : inputfile) {
             String cleanedLString = replaceCharactersByCorrespondingNumber(line);

@@ -3,7 +3,7 @@ package com.sven.adventofcode.day_2;
 import java.util.List;
 import java.io.IOException;
 
-import com.sven.adventofcode.utils.ChallengeInputReader;
+import com.sven.adventofcode.utils.ChallengeHelper;
 
 public class CubeConundrum {
 
@@ -17,7 +17,7 @@ public class CubeConundrum {
     // read file day1_1.txt file to array
     public static void processInputFile_day2_1() throws IOException {
         // read file
-        List<String> inputfile = ChallengeInputReader.readFileContentasList("day2_1.txt");
+        List<String> inputfile = ChallengeHelper.readFileContentasList("day2_1.txt");
         // iterate
         int gameId = 1;
         for (String line : inputfile) {
@@ -31,7 +31,7 @@ public class CubeConundrum {
 
     public static void processInputFile_day2_2() throws IOException {
         // read file
-        List<String> inputfile = ChallengeInputReader.readFileContentasList("day2_2.txt");
+        List<String> inputfile = ChallengeHelper.readFileContentasList("day2_2.txt");
         // iterate
         for (String line : inputfile) {
             String[] lineArray = line.split(":");
